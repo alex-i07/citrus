@@ -1,0 +1,16 @@
+{
+    "name": "alexander/parser",
+    "description": "Html page parser",
+    "authors": [
+        {
+            "name": "ximee",
+            "email": "a3bg5@protonmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
