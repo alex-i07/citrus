@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Commands;
+namespace App\ConsoleCommands;
 
 use App\OutputFormatter;
 
-class HelpCommand
+class HelpConsoleCommand
 {
     /**
      * Name of the parameter in command line without hyphens.

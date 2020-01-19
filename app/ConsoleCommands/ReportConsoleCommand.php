@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Commands;
+namespace App\ConsoleCommands;
 
 
-class ReportCommand
+class ReportConsoleCommand
 {
     public const OPTION = 'domain';
     /**

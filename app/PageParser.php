@@ -2,27 +2,30 @@
 
 namespace App;
 
-
 class PageParser
 {
     /**
+     * RECEIVER
      * @param $optionValue
      *
      * @return array
      */
     public static function parsePage($optionValue)
     {
-        $pageContent = file_get_contents("http://{$optionValue}");
+//        $pageContent = file_get_contents("http://{$optionValue}");
+//
+//        $dom = new \DOMDocument;
+//        @$dom->loadHTML($pageContent);
 
-        $dom = new \DOMDocument;
-        @$dom->loadHTML($pageContent);
+//        $images = $dom->getElementsByTagName('img');
+//
+//        $imageSources = [];
+//        foreach ($images as $image) {
+//            $imageSources[] = $image->getAttribute('src');
+////            $imageSources[] = implode(parse_url($image->getAttribute('src')), '');
+//        }
 
-        $images = $dom->getElementsByTagName('img');
-
-        $imageSources = [];
-        foreach ($images as $image) {
-            $imageSources[] = implode(parse_url($image->getAttribute('src')), '');
-        }
+        return $imageSources;
 
         $links = $dom->getElementsByTagName('a');
 

@@ -3,12 +3,12 @@
 namespace App;
 
 
-class CommandsScanner
+class ConsoleCommandsScanner
 {
     /**
      * Directory where commands files are placed.
      */
-    protected const COMMANDS_PATH = 'app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
+    protected const COMMANDS_PATH = 'app' . DIRECTORY_SEPARATOR . 'ConsoleCommands' . DIRECTORY_SEPARATOR;
 
     /**
      * RegExp that is used to parse command file name to

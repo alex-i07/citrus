@@ -2,23 +2,23 @@
 
 namespace App;
 
-use App\Commands;
+use App\ConsoleCommands;
 
-class CommandFactory
+class ConsoleCommandFactory
 {
     /**
      * Directory where commands files are placed.
      */
-    protected const COMMANDS_NAMESPACE = 'App\Commands\\';
+    protected const COMMANDS_NAMESPACE = 'App\ConsoleCommands\\';
 
     /**
      * Class name partial to be added to $option to
      * obtain full command class name.
      */
-    protected const COMMAND_CLASS_PARTIAL = 'Command';
+    protected const COMMAND_CLASS_PARTIAL = 'ConsoleCommand';
 
     /**
-     * Find and launch corresponding command in app\Commands directory.
+     * Find and launch corresponding command in app\ConsoleCommands directory.
      *
      * @param string $command
      *
