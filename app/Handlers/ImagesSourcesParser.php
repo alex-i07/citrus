@@ -6,6 +6,9 @@ use App\Registry;
 
 class ImagesSourcesParser extends BaseHandler
 {
+    /**
+     * @return null
+     */
     public function handle()
     {
         $dom = Registry::getHtmlPage();
@@ -14,10 +17,11 @@ class ImagesSourcesParser extends BaseHandler
         $imageSources = [];
         foreach ($images as $image) {
             $imageSources[] = $image->getAttribute('src');
-//            $imageSources[] = implode(parse_url($image->getAttribute('src')), '');
         }
 
         Registry::setParsedImageUrls($imageSources);
+
+        parent::setNext(new IntraLinksParser());
 
         return parent::handle();
     }

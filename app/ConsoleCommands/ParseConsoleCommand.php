@@ -2,50 +2,38 @@
 
 namespace App\ConsoleCommands;
 
-use App\PageParser;
-use App\OutputFormatter;
+use App\Registry;
+use App\Handlers\HtmlPageFetcher;
 
 class ParseConsoleCommand
 {
     /**
-     * COMMANDER/INVOKER
      * Name of the parameter in command line without hyphens.
      */
     public const OPTION = 'url';
+
+    /**
+     * Output type.
+     */
+    public const OUTPUT_TYPE = 'csv';
 
     /**
      * @return mixed
      */
     public function handle($option, $optionValue)
     {
-        $result = PageParser::parsePage($optionValue);
+        preg_match(Registry::OPTION_VALUE_PARSER_REG_EXP, $optionValue, $matches);
 
+        Registry::setDomainName($matches[3]);
 
-        // carWash invoker/Commander
-//        $carWash->addProgramme('motorwash',
-//            new CarSimpleWashCommand,
-//            new CarMotorWashCommand,
-//            new CarDryCommand,
-//            new CarWaxCommand
-//        );
+        if (empty($matches[1])) {
+            Registry::setUrlsToParse(['http://' . $optionValue]);
+        }
 
-//        var_dump($result); exit(0);
+        Registry::setOutputType(self::OUTPUT_TYPE);
 
-        $urls = $result['urls'];
+        $handler = new HtmlPageFetcher();
 
-        unset($result['urls']);
-
-        OutputFormatter::output($result);
-
-//        foreach ($urls as $url) {
-//            if("http://{$optionValue}" !== $url) {
-//                $tmp = PageParser::parsePage($url);
-//                if (isset($tmp['urls'])) {
-//                    $result[] = $tmp['urls'];
-//                    unset($tmp['urls']);
-//                }
-//            }
-//        }
-
+        $handler->handle();
     }
 }
